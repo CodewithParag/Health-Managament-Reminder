@@ -1,0 +1,42 @@
+#Healthy Programmer
+from pygame import mixer
+from datetime import datetime
+from time import time
+print("#####Welcome to the Personalised Alarm/Reminder designed by Parag######")
+print("<><><><><><>Reminder aapko milta rahega<><><><><><><>")
+def music(file,stop):
+    mixer.init()
+    mixer.music.load(file)
+    mixer.music.play()
+    while True:
+        input_of_user = input().capitalize()
+        if input_of_user == stop:
+            mixer.music.stop()
+            break
+def log(msg):
+    with open("log.txt","a") as f:
+        f.write(f"{msg} {datetime.now()}\n")
+if __name__ == '__main__':
+    water=time()
+    eyes=time()
+    exercise=time()
+    watertime=5
+    eyetime=10
+    exercisetime=14
+# if datetime.now().strftime("%H") > str(9) and datetime.now().strftime("%H") < str(17):
+    while True:
+        if time()-water>watertime:
+            print("Paani pi lo baba. Write Done to stop the alarm")
+            music('duniya.mp3','Done')
+            water=time()
+            log("Paani piya gaya at : ")
+        if time()-eyes>eyetime:
+            print("Eye resting time. Write Done to stop the alarm")
+            music('duniya.mp3','Done')
+            eyes=time()
+            log("Eyes rested at : ")
+        if time()-exercise>exercisetime:
+            print("Exercise kar lo balak. Write Done to stop the alarm")
+            music('duniya.mp3','Done')
+            exercise=time()
+            log("Exercise kiya gaya at : ")
